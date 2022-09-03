@@ -1,0 +1,34 @@
+{
+  "name": "mfjs",
+  "version": "0.1.0",
+  "description": "import module federation and can override sharing",
+  "repository": "https://github.com/zhangHongEn/mfjs",
+  "keywords": [
+    "webpack",
+    "webpack5",
+    "module federation",
+    "umd",
+    "systemjs",
+    "share",
+    "import-http-webpack-plugin"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "src",
+    "doc"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "build": "webpack --mode production"
+  },
+  "devDependencies": {
+    "@babel/core": "7.16.0",
+    "@babel/plugin-transform-runtime": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "babel-loader": "8.2.3",
+    "webpack": "4",
+    "webpack-cli": "^4.10.0"
+  }
+}
