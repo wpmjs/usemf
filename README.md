@@ -9,9 +9,9 @@
 ## 使用示例
 示例的app2对应https://github.com/webpack/webpack.js.org/tree/master/examples/module-federation
 ``` js
-import mfjs from "mfjs"
+import usemf from "usemf"
     
-mfjs.import({
+usemf.import({
   url: "http://localhost:3002/remoteEntry.js",
   name: "app2",
   shared: {
