@@ -1,6 +1,6 @@
 {
   "name": "mfalize",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "import module federation and can override sharing",
   "repository": "https://github.com/zhangHongEn/mfalize",
   "keywords": [
