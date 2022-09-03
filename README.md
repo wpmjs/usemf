@@ -1,17 +1,17 @@
-# usemf
+# mfalize
 
 1. 可以引入module federation的模块, 并且可以覆盖shared
 
 ## 使用场景
-1. 如果需要在非webpack5环境使用自己或第三方提供的module federation库, 则可以使用usemf
+1. 如果需要在非webpack5环境使用自己或第三方提供的module federation库, 则可以使用mfalize
 2. 如果项目还无法立刻升webpack5, 或者有比较多的umd库无法立刻升级module federation
 
 ## 使用示例
 示例的app2对应https://github.com/webpack/webpack.js.org/tree/master/examples/module-federation
 ``` js
-import usemf from "usemf"
+import mfalize from "mfalize"
     
-usemf.import({
+mfalize.import({
   url: "http://localhost:3002/remoteEntry.js",
   name: "app2",
   shared: {
