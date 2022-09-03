@@ -2,7 +2,7 @@ const path = require("path")
 const HtmlPlugin = require("html-webpack-plugin")
 
 module.exports = {
-  entry: `./src/pre-get.development.js`,
+  entry: `./src/index.js`,
   resolve: {
     extensions: ['.js', '.vue', '.ts', '.json'],
   },
