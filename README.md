@@ -1,9 +1,9 @@
-# @zh/mfjs
+# usemf
 
 1. 可以引入module federation的模块, 并且可以覆盖shared
 
 ## 使用场景
-1. 如果需要在非webpack5环境使用自己或第三方提供的module federation库, 则可以使用@zh/mfjs
+1. 如果需要在非webpack5环境使用自己或第三方提供的module federation库, 则可以使用usemf
 2. 如果项目还无法立刻升webpack5, 或者有比较多的umd库无法立刻升级module federation
 
 ## 使用示例
