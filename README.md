@@ -10,6 +10,9 @@
 示例的app2对应https://github.com/webpack/webpack.js.org/tree/master/examples/module-federation
 ``` js
 import mfalize from "mfalize"
+// 如果需要使用远程的system、umd等依赖, 可以使用systemjs加载
+import "systemjs/dist/s"
+import "systemjs/dist/extras/amd"
     
 mfalize.import({
   url: "http://localhost:3002/remoteEntry.js",
