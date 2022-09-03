@@ -1,5 +1,7 @@
 # mfalize
 
+!!! 重要 不要将assets.weimob.com 这个域名用于生产环境, 此域名随时会限制可用域名
+
 1. 可以引入module federation的模块, 并且可以覆盖shared
 
 ## 使用场景
