@@ -1,17 +1,15 @@
 # usemf
 
-[中文文档](doc/chinese)
+1. 可以引入module federation的模块, 并且可以覆盖shared
 
-1. Modules of module federation can be introduced, and shared can be overwritten
+## 使用场景
+1. 如果需要在非webpack5环境使用自己或第三方提供的module federation库, 则可以使用usemf
+2. 如果项目还无法立刻升webpack5, 或者有比较多的umd库, 需要逐渐升级
 
-## Usage scenario
-1. If you need to use the module Federation library provided by yourself or a third party in a non webpack5 environment, you can use usemf
-2. If the project cannot upgrade webpack5 immediately, or there are many UMD libraries, it needs to be upgraded gradually
-
-## Try online
+## 在线尝试
 https://stackblitz.com/github/wpmjs/wpmjs/tree/main/examples/umd-and-module-federation?file=app1%2Fsrc%2FApp.js
 
-## Usage example:
+## 使用示例
 ``` js
 import React from "react";
 
@@ -20,9 +18,7 @@ import "systemjs/dist/extras/amd"
 import "systemjs/dist/extras/global"
 
 const shared = {
-  shareScope: "default",    // Default value is not required
-
-  // You can provide shared React to make app2 not use the standby react module to achieve react singleton
+  shareScope: "default",    // 默认值 非必填
   react: {
     version: "17.0.2",
     async get () {
@@ -47,7 +43,7 @@ const shared = {
 import mfjs from "mfalize"
 const app2_version1 = mfjs.import({
   url: "http://localhost:3002/remoteEntry.js",
-  // name: "app2",  // If modules such as mfplugin library type "amd" | "system" are set, name is not required
+  // name: "app2",  // 如果设置了mfplugin library type为 "amd" | "system" 等模块, 则name非必填
   shared:  {
     shareScope: "scope2",
     react: shared.react
@@ -56,7 +52,7 @@ const app2_version1 = mfjs.import({
 
 const app2_version2 = mfjs.import({
   url: "http://localhost:3003/remoteEntry.js",
-  name: "app2",  // If modules such as mfplugin library type "amd" | "system" are set, name is not required
+  name: "app2",  // 如果设置了mfplugin library type为 "amd" | "system" 等模块, 则name非必填
   shared
 })("./App")
 
