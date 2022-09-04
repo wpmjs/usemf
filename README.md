@@ -7,7 +7,7 @@
 2. 如果项目还无法立刻升webpack5, 或者有比较多的umd库无法立刻升级module federation
 
 ## 在线尝试
-https://stackblitz.com/github/wpmjs/wpmjs/tree/main/examples/hot-refresh?file=app2%2Fsrc%2FApp2.jsx
+https://stackblitz.com/github/wpmjs/wpmjs/tree/main/examples/umd-and-module-federation?file=app1%2Fsrc%2FApp.js
 
 ## 使用示例
 示例的app2对应https://github.com/webpack/webpack.js.org/tree/master/examples/module-federation
