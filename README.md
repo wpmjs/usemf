@@ -1,22 +1,23 @@
-# mfalize
+# usemf
 
 1. 可以引入module federation的模块, 并且可以覆盖shared
 
 ## 使用场景
-1. 如果需要在非webpack5环境使用自己或第三方提供的module federation库, 则可以使用mfalize
+1. 如果需要在非webpack5环境使用自己或第三方提供的module federation库, 则可以使用usemf
 2. 如果项目还无法立刻升webpack5, 或者有比较多的umd库无法立刻升级module federation
 
 ## 使用示例
 示例的app2对应https://github.com/webpack/webpack.js.org/tree/master/examples/module-federation
 ``` js
-import mfalize from "mfalize"
-// 如果需要使用远程的system、umd等依赖, 可以使用systemjs加载
+import mfalize from "usemf"
+import * as ReactDOM from "react-dom"
 import "systemjs/dist/s"
 import "systemjs/dist/extras/amd"
+import "systemjs/dist/extras/global"
     
-mfalize.import({
+usemf.import({
   url: "http://localhost:3002/remoteEntry.js",
-  name: "app2",
+  name: "app2", // 如果mfplugin设置({ library: {type: "amd" || "system"} })则可以不指定name
   shared: {
     shareScope: "default", // 默认值, 可不传
     // 比如你的非webpack5项目要使用自己或第三方提供的module federation组件, 
@@ -35,7 +36,7 @@ mfalize.import({
       version: "17.0.2",
       async get () {
         return function () {
-          return window.ReactDOM || {
+          return ReactDOM || {
             default: {
               test: 333,
             },

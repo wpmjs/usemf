@@ -7,7 +7,7 @@ import { scriptCache } from "./cache";
  * @param {*} shared 
  * @returns 
  */
-export default function preloadModule(name, shared = {}) {
+export default function preloadModule(container, shared = {}) {
   const {
     shareScope = "default",
     ...pkgs
@@ -15,16 +15,15 @@ export default function preloadModule(name, shared = {}) {
   async function initShare() {
     // Initializes the share scope. This fills it with known provided modules from this build and all remotes
     await __webpack_init_sharing__(shareScope);
-    const container = window[name]; // or get the container somewhere else
     // Initialize the container, it may provide shared modules
     Object.keys(pkgs).forEach(name => {
       const {
         version,
         get
       } = pkgs[name]
-      __webpack_share_scopes__.default[name] = __webpack_share_scopes__.default[name] || {}
-      const pkgInfo = __webpack_share_scopes__.default[name]
-      pkgInfo[version] = {
+      __webpack_share_scopes__[shareScope][name] = __webpack_share_scopes__[shareScope][name] || {}
+      const pkgInfo = __webpack_share_scopes__[shareScope][name]
+      pkgInfo[version] = pkgInfo[version] || {
         eager: false,
         from: "",
         __fromMFJS: true,
@@ -32,7 +31,7 @@ export default function preloadModule(name, shared = {}) {
         loaded: 1,
       }
     })
-    await container.init(__webpack_share_scopes__.default);
+    await container.init(__webpack_share_scopes__[shareScope]);
   }
   const waitInitShare = initShare()
   /**
@@ -40,7 +39,7 @@ export default function preloadModule(name, shared = {}) {
    */
   return async function loadModule(module) {
     await waitInitShare
-    const factory = await window[name].get(module);
+    const factory = await container.get(module);
     const Module = factory();
     return Module;
   }
