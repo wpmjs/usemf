@@ -10,7 +10,7 @@ module.exports = {
     filename: `./index.js`,
     chunkFilename: "[name]-[chunkhash].js",
     libraryTarget: "umd",
-    library: "mfjs"
+    library: "usemf"
   },
   module: {
     rules: [
