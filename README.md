@@ -44,7 +44,7 @@ const shared = {
   }
 }
 
-import mfjs from "mfalize"
+import mfjs from "usemf"
 const app2_version1 = mfjs.import({
   url: "http://localhost:3002/remoteEntry.js",
   // name: "app2",  // If modules such as mfplugin library type "amd" | "system" are set, name is not required
