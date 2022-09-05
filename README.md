@@ -44,8 +44,8 @@ const shared = {
   }
 }
 
-import mfjs from "usemf"
-const app2_version1 = mfjs.import({
+import usemf from "usemf"
+const app2_version1 = usemf.import({
   url: "http://localhost:3002/remoteEntry.js",
   // name: "app2",  // If modules such as mfplugin library type "amd" | "system" are set, name is not required
   shared:  {
@@ -54,7 +54,7 @@ const app2_version1 = mfjs.import({
   }
 })("./App")
 
-const app2_version2 = mfjs.import({
+const app2_version2 = usemf.import({
   url: "http://localhost:3003/remoteEntry.js",
   name: "app2",  // If modules such as mfplugin library type "amd" | "system" are set, name is not required
   shared

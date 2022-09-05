@@ -40,8 +40,8 @@ const shared = {
   }
 }
 
-import mfjs from "usemf"
-const app2_version1 = mfjs.import({
+import usemf from "usemf"
+const app2_version1 = usemf.import({
   url: "http://localhost:3002/remoteEntry.js",
   // name: "app2",  // 如果设置了mfplugin library type为 "amd" | "system" 等模块, 则name非必填
   shared:  {
@@ -50,7 +50,7 @@ const app2_version1 = mfjs.import({
   }
 })("./App")
 
-const app2_version2 = mfjs.import({
+const app2_version2 = usemf.import({
   url: "http://localhost:3003/remoteEntry.js",
   name: "app2",  // 如果设置了mfplugin library type为 "amd" | "system" 等模块, 则name非必填
   shared

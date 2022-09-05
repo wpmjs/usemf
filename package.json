@@ -1,12 +1,13 @@
 {
   "name": "usemf",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "import module federation and can override sharing",
   "repository": "https://github.com/zhangHongEn/usemf",
   "keywords": [
     "webpack",
     "webpack5",
     "module federation",
+    "module-federation",
     "umd",
     "systemjs",
     "share",
