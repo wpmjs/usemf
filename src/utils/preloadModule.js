@@ -1,5 +1,3 @@
-import { scriptCache } from "./cache";
-
 /**
  * 第一次准载模块, 初始化依赖
  * @param {*} name 
@@ -7,7 +5,7 @@ import { scriptCache } from "./cache";
  * @param {*} shared 
  * @returns 
  */
-export default function preloadModule(container, shared = {}) {
+module.exports = function preloadModule(container, shared = {}) {
   const {
     shareScope = "default",
     ...pkgs

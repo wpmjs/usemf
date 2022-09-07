@@ -1,6 +1,5 @@
-import { scriptCache } from './utils/cache';
-import getPromise from './utils/getPromise';
-import preloadModule from './utils/preloadModule';
+const getPromise = require('./utils/getPromise');
+const preloadModule = require('./utils/preloadModule');
 // mfjs.import(url, name, shared , customLoadScript)[module]
 // shared: {
 //   shareScope,
@@ -10,7 +9,7 @@ import preloadModule from './utils/preloadModule';
 //   }
 // }
 
-export default {
+module.exports = {
   import({url, name, shared} = {}) {
     const getLoadModule = async function () {
       const {
@@ -18,11 +17,6 @@ export default {
         resolve,
         reject
       } = getPromise()
-      scriptCache[name] = {
-        promise,
-        value: null,
-        exposes: {}
-      }
       try {
         const res = await window.System.import(url)
         const container = [res, window[name]].filter(container => {

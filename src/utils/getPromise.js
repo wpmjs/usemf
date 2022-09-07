@@ -1,4 +1,4 @@
-export default function getPromise() {
+module.exports = function getPromise() {
   let _resolve, _reject
   var promise = new Promise((resolve, reject) => {
     _resolve = resolve
