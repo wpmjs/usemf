@@ -9,6 +9,7 @@
 ## 在线尝试
 https://stackblitz.com/github/wpmjs/wpmjs/tree/main/examples/umd-and-module-federation?file=app1%2Fsrc%2FApp.js
 ## 简单用法:
+可不传shared, mf模块会自动使用备用模块
 ``` js
 import "systemjs/dist/s"
 import "systemjs/dist/extras/amd"

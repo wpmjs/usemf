@@ -25,6 +25,7 @@ const app2_version1 = usemf.import({
 ```
 
 ## Advanced Usage:
+"Shared" is not required, and the "MF" module will automatically use the standby module
 ``` js
 import React from "react";
 
