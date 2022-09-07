@@ -11,7 +11,20 @@
 ## Try online
 https://stackblitz.com/github/wpmjs/wpmjs/tree/main/examples/umd-and-module-federation?file=app1%2Fsrc%2FApp.js
 
-## Usage example:
+## Simplest usage:
+``` js
+import "systemjs/dist/s"
+import "systemjs/dist/extras/amd"
+import "systemjs/dist/extras/global"
+import usemf from "usemf"
+
+const app2_version1 = usemf.import({
+  url: "http://localhost:3002/remoteEntry.js",
+  // name: "app2",  // If modules such as mfplugin library type "amd" | "system" are set, name is not required
+})("./App")
+```
+
+## Advanced Usage:
 ``` js
 import React from "react";
 
