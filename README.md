@@ -12,6 +12,7 @@
 https://stackblitz.com/github/wpmjs/wpmjs/tree/main/examples/umd-and-module-federation?file=app1%2Fsrc%2FApp.js
 
 ## Simplest usage:
+"Shared" is not required, and the "MF" module will automatically use the standby module
 ``` js
 import "systemjs/dist/s"
 import "systemjs/dist/extras/amd"
@@ -25,7 +26,6 @@ const app2_version1 = usemf.import({
 ```
 
 ## Advanced Usage:
-"Shared" is not required, and the "MF" module will automatically use the standby module
 ``` js
 import React from "react";
 
