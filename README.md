@@ -14,24 +14,18 @@ https://stackblitz.com/github/wpmjs/wpmjs/tree/main/examples/umd-and-module-fede
 ## Simplest usage:
 "Shared" is not required, and the "MF" module will automatically use the standby module
 ``` js
-import "systemjs/dist/s"
-import "systemjs/dist/extras/amd"
-import "systemjs/dist/extras/global"
 import usemf from "usemf"
 
-const app2_version1 = usemf.import({
+const app2 = usemf.import({
   url: "http://localhost:3002/remoteEntry.js",
-  // name: "app2",  // If modules such as mfplugin library type "amd" | "system" are set, name is not required
+  name: "app2",
 })("./App")
 ```
 
 ## Advanced Usage:
 ``` js
 import React from "react";
-
-import "systemjs/dist/s"
-import "systemjs/dist/extras/amd"
-import "systemjs/dist/extras/global"
+import usemf from "usemf"
 
 const shared = {
   shareScope: "default",    // Default value is not required
@@ -58,19 +52,18 @@ const shared = {
   }
 }
 
-import usemf from "usemf"
-const app2_version1 = usemf.import({
+const app2 = usemf.import({
   url: "http://localhost:3002/remoteEntry.js",
-  // name: "app2",  // If modules such as mfplugin library type "amd" | "system" are set, name is not required
+  name: "app2",
   shared:  {
     shareScope: "scope2",
     react: shared.react
   }
 })("./App")
 
-const app2_version2 = usemf.import({
+const app3 = usemf.import({
   url: "http://localhost:3003/remoteEntry.js",
-  name: "app2",  // If modules such as mfplugin library type "amd" | "system" are set, name is not required
+  name: "app3",
   shared
 })("./App")
 

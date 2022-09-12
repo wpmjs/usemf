@@ -11,26 +11,22 @@ https://stackblitz.com/github/wpmjs/wpmjs/tree/main/examples/umd-and-module-fede
 ## 简单用法:
 可不传shared, mf模块会自动使用备用模块
 ``` js
-import "systemjs/dist/s"
-import "systemjs/dist/extras/amd"
-import "systemjs/dist/extras/global"
 import usemf from "usemf"
 
-const app2_version1 = usemf.import({
+const app2 = usemf.import({
   url: "http://localhost:3002/remoteEntry.js",
-  // name: "app2",  // If modules such as mfplugin library type "amd" | "system" are set, name is not required
+  name: "app2",
 })("./App")
 ```
 ## 高级用法:
 ``` js
 import React from "react";
-
-import "systemjs/dist/s"
-import "systemjs/dist/extras/amd"
-import "systemjs/dist/extras/global"
+import usemf from "usemf"
 
 const shared = {
-  shareScope: "default",    // 默认值 非必填
+  shareScope: "default",    // Default value is not required
+
+  // You can provide shared React to make app2 not use the standby react module to achieve react singleton
   react: {
     version: "17.0.2",
     async get () {
@@ -52,19 +48,18 @@ const shared = {
   }
 }
 
-import usemf from "usemf"
-const app2_version1 = usemf.import({
+const app2 = usemf.import({
   url: "http://localhost:3002/remoteEntry.js",
-  // name: "app2",  // 如果设置了mfplugin library type为 "amd" | "system" 等模块, 则name非必填
+  name: "app2",
   shared:  {
     shareScope: "scope2",
     react: shared.react
   }
 })("./App")
 
-const app2_version2 = usemf.import({
+const app3 = usemf.import({
   url: "http://localhost:3003/remoteEntry.js",
-  name: "app2",  // 如果设置了mfplugin library type为 "amd" | "system" 等模块, 则name非必填
+  name: "app3",
   shared
 })("./App")
 
