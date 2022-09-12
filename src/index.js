@@ -10,9 +10,6 @@ const preloadModule = require('./utils/preloadModule');
 //   }
 // }
 module.exports = window.usemf = window.usemf ||  {
-  setShareScopes(val) {
-    __webpack_share_scopes__ = val
-  },
   getShareScopes() {
     return __webpack_share_scopes__
   },
@@ -37,7 +34,11 @@ module.exports = window.usemf = window.usemf ||  {
       }
       return promise
     }
-    const loadModule = getLoadModule()
-    return async (...params) => (await loadModule)(...params)
+    const continerInitPromise = getLoadModule()
+    async function loadModule (...params) {
+      return (await continerInitPromise)(...params)
+    }
+    loadModule.continerInitPromise = continerInitPromise
+    return loadModule
   }
 }
