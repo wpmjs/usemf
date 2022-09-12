@@ -67,6 +67,6 @@ const app3 = usemf.import({
   shared
 })("./App")
 
-const App2 = React.lazy(() => app2_version1)
-const App2_2 = React.lazy(() => app2_version2)
+const App2 = React.lazy(() => app2)
+const App2_2 = React.lazy(() => app3)
 ```
