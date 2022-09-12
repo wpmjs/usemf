@@ -1,4 +1,5 @@
 const getPromise = require('./utils/getPromise');
+const { default: loadScript } = require('./utils/loadScript');
 const preloadModule = require('./utils/preloadModule');
 // mfjs.import(url, name, shared , customLoadScript)[module]
 // shared: {
@@ -8,8 +9,13 @@ const preloadModule = require('./utils/preloadModule');
 //     url,
 //   }
 // }
-
-module.exports = {
+module.exports = window.usemf = window.usemf ||  {
+  setShareScopes(val) {
+    __webpack_share_scopes__ = val
+  },
+  getShareScopes() {
+    return __webpack_share_scopes__
+  },
   import({url, name, shared} = {}) {
     const getLoadModule = async function () {
       const {
@@ -18,7 +24,7 @@ module.exports = {
         reject
       } = getPromise()
       try {
-        const res = await window.System.import(url)
+        const res = await loadScript(url)
         const container = [res, window[name]].filter(container => {
           return typeof container?.init === "function" && typeof container?.get === "function"
         })[0]
