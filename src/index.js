@@ -13,7 +13,10 @@ module.exports = window.usemf = window.usemf ||  {
   getShareScopes() {
     return __webpack_share_scopes__
   },
-  import({url, name, shared} = {}) {
+  import({url, name, shared, customGetContainer} = {}) {
+    if (!customGetContainer) {
+      customGetContainer = ({url, name, shared}) => loadScript(url)
+    }
     const getLoadModule = async function () {
       const {
         promise,
@@ -21,7 +24,7 @@ module.exports = window.usemf = window.usemf ||  {
         reject
       } = getPromise()
       try {
-        const res = await loadScript(url)
+        const res = await customGetContainer({url})
         const container = [res, window[name]].filter(container => {
           return typeof container?.init === "function" && typeof container?.get === "function"
         })[0]
