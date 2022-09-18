@@ -10,13 +10,20 @@ const preloadModule = require('./utils/preloadModule');
 //   }
 // }
 module.exports = window.usemf = window.usemf ||  {
+  containerCached: {
+    // url: promise<container>
+  },
   getShareScopes() {
     return __webpack_share_scopes__
   },
-  import({url, name, shared, customGetContainer} = {}) {
+  getContainer({url, name, shared, customGetContainer} = {}) {
+    if (containerCached[url]) return containerCached[url]
     if (!customGetContainer) {
-      customGetContainer = ({url, name, shared}) => loadScript(url)
+      customGetContainer = ({url}) => loadScript(url)
     }
+    return containerCached[url] = customGetContainer({url, name, shared, customGetContainer})
+  },
+  import({url, name, shared, customGetContainer} = {}) {
     const getLoadModule = async function () {
       const {
         promise,
@@ -24,7 +31,7 @@ module.exports = window.usemf = window.usemf ||  {
         reject
       } = getPromise()
       try {
-        const res = await customGetContainer({url})
+        const res = await this.getContainer({url, name, shared, customGetContainer})
         const container = [res, window[name]].filter(container => {
           return typeof container?.init === "function" && typeof container?.get === "function"
         })[0]

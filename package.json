@@ -1,6 +1,6 @@
 {
   "name": "usemf",
-  "version": "0.4.5",
+  "version": "0.4.5-beta-1",
   "description": "import module federation and can override sharing",
   "repository": "https://github.com/wpmjs/usemf",
   "keywords": [

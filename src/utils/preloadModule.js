@@ -10,6 +10,7 @@ module.exports = async function preloadModule(container, shared = {}) {
     shareScope = "default",
     ...pkgs
   } = shared
+
   Object.keys(pkgs).forEach(name => {
     const pkg = pkgs[name]
     __webpack_share_scopes__[shareScope][name] = __webpack_share_scopes__[shareScope][name] || {}
