@@ -16,15 +16,16 @@ module.exports = window.usemf = window.usemf ||  {
   getShareScopes() {
     return __webpack_share_scopes__
   },
-  getContainer({url, name, shared, customGetContainer} = {}) {
+  getContainer({url, name, customGetContainer} = {}) {
+    const {containerCached} = this
     if (containerCached[url]) return containerCached[url]
     if (!customGetContainer) {
       customGetContainer = ({url}) => loadScript(url)
     }
-    return containerCached[url] = customGetContainer({url, name, shared, customGetContainer})
+    return containerCached[url] = customGetContainer({url, name, customGetContainer})
   },
   import({url, name, shared, customGetContainer} = {}) {
-    const getLoadModule = async function () {
+    const getLoadModule = async () => {
       const {
         promise,
         resolve,
