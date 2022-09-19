@@ -23,6 +23,7 @@ const app2 = usemf.import({
 * import({url, name, shared: {shareScope, pkg}, customGetContainer})
 * getShareScopes()
 * getContainer({url, name, customGetContainer})
+* getShare(name, {requiredVersion,shareScope,singleton,strictVersion}, shareScopes)
 ## 高级用法:
 ``` js
 import React from "react";

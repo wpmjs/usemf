@@ -1,4 +1,5 @@
 const getPromise = require('./utils/getPromise');
+const { getShare } = require('./utils/getShare');
 const { default: loadScript } = require('./utils/loadScript');
 const preloadModule = require('./utils/preloadModule');
 // mfjs.import(url, name, shared , customLoadScript)[module]
@@ -16,13 +17,21 @@ module.exports = window.usemf = window.usemf ||  {
   getShareScopes() {
     return __webpack_share_scopes__
   },
-  getContainer({url, name, customGetContainer} = {}) {
+  getShare,
+  async getContainer({url, name, customGetContainer} = {}) {
     const {containerCached} = this
     if (containerCached[url]) return containerCached[url]
     if (!customGetContainer) {
       customGetContainer = ({url}) => loadScript(url)
     }
-    return containerCached[url] = customGetContainer({url, name, customGetContainer})
+    const res = await customGetContainer({url, name, customGetContainer})
+    const container = [res, window[name]].filter(container => {
+      return typeof container?.init === "function" && typeof container?.get === "function"
+    })[0]
+    if (!container) {
+      throw new Error("not container", name, url)
+    }
+    return containerCached[url] = container
   },
   import({url, name, shared, customGetContainer} = {}) {
     const getLoadModule = async () => {
@@ -32,13 +41,7 @@ module.exports = window.usemf = window.usemf ||  {
         reject
       } = getPromise()
       try {
-        const res = await this.getContainer({url, name, shared, customGetContainer})
-        const container = [res, window[name]].filter(container => {
-          return typeof container?.init === "function" && typeof container?.get === "function"
-        })[0]
-        if (!container) {
-          throw new Error("not container", name, url)
-        }
+        const container = await this.getContainer({url, name, shared, customGetContainer})
         resolve(preloadModule(container, shared))
       } catch (e) {
         reject(e)
