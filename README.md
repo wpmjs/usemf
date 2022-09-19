@@ -25,6 +25,7 @@ const app2 = usemf.import({
 ## API:
 * import({url, name, shared: {shareScope, pkg}, customGetContainer})
 * getShareScopes()
+* getContainer({url, name, customGetContainer})
 
 ## Advanced Usage:
 ``` js
