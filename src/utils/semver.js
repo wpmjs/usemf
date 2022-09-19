@@ -448,7 +448,7 @@ exports.stringifyHoley = json => {
 };
 
 module.exports.rangesMaxSatisfying = function(versions = [], range = "*") {
-	const descVersions = [...versions].sort((p, n) => n - p)
+	const descVersions = [...versions].sort((p, n) => exports.versionLt(p, n) ? -1 : 1)
 	for (var version of descVersions) {
 		if (exports.satisfy(exports.parseRange(range), version)) {
 			return version
