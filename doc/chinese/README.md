@@ -1,6 +1,7 @@
 # usemf
 
-1. 可以引入module federation的模块, 并且可以覆盖shared
+1. 可以引入webpack 4 和 5 打出的 module federation的模块, 并且可以覆盖shared
+2. [mf-webpack4](https://www.npmjs.com/package/mf-webpack4) 
 
 ## 使用场景
 1. 如果需要在非webpack5环境使用自己或第三方提供的module federation库, 则可以使用usemf

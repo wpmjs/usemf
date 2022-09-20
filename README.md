@@ -3,6 +3,9 @@
 [中文文档](doc/chinese)
 
 1. Modules of module federation can be introduced, and shared can be overwritten
+2. [mf-webpack4](https://www.npmjs.com/package/mf-webpack4) 
+
+
 
 ## Usage scenario
 1. If you need to use the module Federation library provided by yourself or a third party in a non webpack5 environment, you can use usemf
@@ -34,8 +37,6 @@ import React from "react";
 import usemf from "usemf"
 
 const shared = {
-  shareScope: "default",    // Default value is not required
-
   // You can provide shared React to make app2 not use the standby react module to achieve react singleton
   react: {
     version: "17.0.2",
@@ -62,7 +63,6 @@ const app2 = usemf.import({
   url: "http://localhost:3002/remoteEntry.js",
   name: "app2",
   shared:  {
-    shareScope: "scope2",
     react: shared.react
   }
 })("./App")
