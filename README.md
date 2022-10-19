@@ -1,5 +1,7 @@
 # usemf
 
+Usemf is a jssdk (not a react hook) used to introduce module-federation in a non-webpack5 environment
+
 [中文文档](doc/chinese)
 
 1. Modules of module federation can be introduced, and shared can be overwritten
@@ -9,7 +11,6 @@
 
 ## Usage scenario
 1. If you need to use the module Federation library provided by yourself or a third party in a non webpack5 environment, you can use usemf
-2. If the project cannot upgrade webpack5 immediately, or there are many UMD libraries, it needs to be upgraded gradually
 
 ## Try online
 https://stackblitz.com/github/wpmjs/wpmjs/tree/main/examples/umd-and-module-federation?file=app1%2Fsrc%2FApp.js
