@@ -5,7 +5,7 @@ Usemf is a jssdk (not a react hook) used to introduce module-federation in a non
 [中文文档](doc/chinese)
 
 1. Modules of module federation can be introduced, and shared can be overwritten
-2. [mf-webpack4](https://www.npmjs.com/package/mf-webpack4) 
+2. [@module-federation/webpack-4](https://www.npmjs.com/package/@module-federation/webpack-4) 
 
 
 
