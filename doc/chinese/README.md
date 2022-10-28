@@ -2,6 +2,8 @@
 
 usemf是一个jssdk（不是react hook）, 用于在非webpack5环境引入module-federation
 
+有了 "usemf" , 就不必担心以后的技术升级导致"module-federation"无法迁移, 无论您切换到什么构建工具, 使用"usemf"都能够继续引用"module-federation"
+
 1. 可以引入webpack 4 和 5 打出的 module federation的模块, 并且可以覆盖shared
 2. [@module-federation/webpack-4](https://www.npmjs.com/package/@module-federation/webpack-4) 
 

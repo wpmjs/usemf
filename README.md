@@ -2,6 +2,10 @@
 
 Usemf is a jssdk (not a react hook) used to introduce module-federation in a non-webpack5 environment
 
+With "usemf", you don't have to worry about the inability of "module federation" to migrate due to future technology upgrades. No matter what build tool you switch to, using "usemf" can continue to reference "module federation"
+
+
+
 [中文文档](doc/chinese)
 
 1. Modules of module federation can be introduced, and shared can be overwritten
