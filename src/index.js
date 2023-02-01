@@ -29,7 +29,7 @@ module.exports = window.usemf = window.usemf ||  {
       return typeof container?.init === "function" && typeof container?.get === "function"
     })[0]
     if (!container) {
-      throw new Error("not container", name, url)
+      throw new Error(`not found container '${name}@${url}'`)
     }
     return containerCached[url] = container
   },
