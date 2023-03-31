@@ -1,5 +1,9 @@
 # usemf
 
+!!!!!!!! new version to [https://github.com/zhangHongEn/universal-module-federation-plugin/tree/main/packages/module-federation-runtime](https://github.com/zhangHongEn/universal-module-federation-plugin/tree/main/packages/module-federation-runtime)
+
+
+
 Usemf is a jssdk (not a react hook) used to introduce module-federation in a non-webpack5 environment
 
 [中文文档](doc/chinese)
