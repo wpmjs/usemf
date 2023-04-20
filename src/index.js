@@ -2,6 +2,7 @@ const getPromise = require('./utils/getPromise');
 const { getShare } = require('./utils/getShare');
 const { default: loadScript } = require('./utils/loadScript');
 const preloadModule = require('./utils/preloadModule');
+const {shareScopes, registerRemotes, findRemote} = require("module-federation-runtime")
 // mfjs.import(url, name, shared , customLoadScript)[module]
 // shared: {
 //   shareScope,
@@ -15,7 +16,7 @@ module.exports = window.usemf = window.usemf ||  {
     // url: promise<container>
   },
   getShareScopes() {
-    return __webpack_share_scopes__
+    return shareScopes
   },
   getShare,
   async getContainer({url, name, customGetContainer} = {}) {
@@ -24,14 +25,14 @@ module.exports = window.usemf = window.usemf ||  {
     if (!customGetContainer) {
       customGetContainer = ({url}) => loadScript(url)
     }
-    const res = await customGetContainer({url, name, customGetContainer})
-    const container = [res, window[name]].filter(container => {
-      return typeof container?.init === "function" && typeof container?.get === "function"
-    })[0]
-    if (!container) {
-      throw new Error(`not found container '${name}@${url}'`)
-    }
-    return containerCached[url] = container
+    await registerRemotes({
+      [name]: {
+        url
+      }
+    }, () => customGetContainer({url, name, customGetContainer}))
+    const container = findRemote(name)
+    containerCached[url] = container
+    return container
   },
   import({url, name, shared, customGetContainer} = {}) {
     const getLoadModule = async () => {
