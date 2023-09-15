@@ -1,6 +1,6 @@
 {
   "name": "usemf",
-  "version": "0.4.21",
+  "version": "0.4.22",
   "description": "import module federation and can override sharing",
   "repository": "https://github.com/wpmjs/usemf",
   "keywords": [
@@ -35,6 +35,6 @@
     "webpack-dev-server": "^4.0.0"
   },
   "dependencies": {
-    "module-federation-runtime": "^1.1.8"
+    "module-federation-runtime": "^1.1.16"
   }
 }

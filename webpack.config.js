@@ -5,6 +5,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.ts', '.json'],
   },
+  externals: ["module-federation-runtime"],
   output: {
     path: path.resolve(__dirname, "./dist"),
     filename: `./index.js`,
